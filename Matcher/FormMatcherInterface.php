@@ -11,9 +11,10 @@ interface FormMatcherInterface
     /**
      * @param string $typeFQN
      * @param string $method
+     * @param mixed|null $data
      * @return FormHandlerInterface
      *
      * @throws MatcherException
      */
-    public function match(string $typeFQN, string $method): FormHandlerInterface;
+    public function match(string $typeFQN, string $method, $data = null): FormHandlerInterface;
 }

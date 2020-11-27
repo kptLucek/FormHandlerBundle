@@ -49,6 +49,7 @@ final class RootFormHandler implements RootFormHandlerInterface
     {
         $handler = $this->matcher->match($FQN, $request->getMethod());
         $form = $this->formFactory->create($FQN, $data, $formOptions);
+        $handled = false;
 
         $this->eventDispatcher->dispatch(new FormHandlePreEvent($form, $handler, $form->getData()));
 
@@ -59,7 +60,9 @@ final class RootFormHandler implements RootFormHandlerInterface
             $form->submit($bag->all());
         }
 
-        $handled = $handler->handle($form, $data);
+        if (true === $form->isSubmitted() && true === $form->isValid()) {
+            $handled = $handler->handle($form, $data);
+        }
 
         $this->eventDispatcher->dispatch(new FormHandlePostEvent($form, $handler, $handled, $form->getData()));
 

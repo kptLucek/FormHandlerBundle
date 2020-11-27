@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormInterface;
 
 interface FormHandlerInterface
 {
-    public function supports(string $typeFQN, string $method): bool;
+    public function supports(string $typeFQN, string $method, $data = null): bool;
 
     public function handle(FormInterface $form, $data = null): bool;
 }

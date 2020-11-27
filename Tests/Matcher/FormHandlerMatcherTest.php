@@ -98,19 +98,20 @@ class FormHandlerMatcherTest extends FormHandlerTestCase
     {
         $fqn = AbstractType::class;
         $method = 'some_method';
+        $data = new \stdClass();
 
         $handler1 = $this->createMock(FormHandlerInterface::class);
         $handler1
             ->expects($this->once())
             ->method('supports')
-            ->withConsecutive([$fqn, $method])
+            ->withConsecutive([$fqn, $method, $data])
             ->willReturn(false);
 
         $handler2 = $this->createMock(FormHandlerInterface::class);
         $handler2
             ->expects($this->once())
             ->method('supports')
-            ->withConsecutive([$fqn, $method])
+            ->withConsecutive([$fqn, $method, $data])
             ->willReturn(true);
 
         $this->repository->expects($this->once())->method('getAll')->willReturn([
@@ -118,6 +119,6 @@ class FormHandlerMatcherTest extends FormHandlerTestCase
             $handler2
         ]);
 
-        $this->assertSame($handler2, $this->instance->match($fqn, $method));
+        $this->assertSame($handler2, $this->instance->match($fqn, $method, $data));
     }
 }

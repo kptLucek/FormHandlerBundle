@@ -19,7 +19,7 @@ final class FormHandlerMatcher implements FormMatcherInterface
         $this->repository = $repository;
     }
 
-    public function match(string $typeFQN, string $method): FormHandlerInterface
+    public function match(string $typeFQN, string $method, $data = null): FormHandlerInterface
     {
         if (false === class_exists($typeFQN)) {
             throw UnsupportedTypeException::createForUndefinedClass($typeFQN);
@@ -30,7 +30,7 @@ final class FormHandlerMatcher implements FormMatcherInterface
         }
 
         foreach ($this->repository->getAll() as $handler) {
-            if (true === $handler->supports($typeFQN, $method)) {
+            if (true === $handler->supports($typeFQN, $method, $data)) {
                 return $handler;
             }
         }
