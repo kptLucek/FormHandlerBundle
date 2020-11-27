@@ -1,0 +1,31 @@
+parameters:
+    lucek_form.repository.class: 'Lucek\FormHandlerBundle\Repository\FormHandlerRepository'
+    lucek_form.matcher.class: 'Lucek\FormHandlerBundle\Matcher\FormHandlerMatcher'
+    lucek_form.validation_extractor.class: 'Lucek\FormHandlerBundle\Validation\FormValidationExtractor'
+    lucek_form.factory.form_handler_result_factory.class: 'Lucek\FormHandlerBundle\Factory\FormHandleResultFactory'
+    lucek_form.handler.root.class: 'Lucek\FormHandlerBundle\Handler\RootFormHandler'
+
+services:
+    lucek_form.factory.form_handler_result_factory:
+        class: '%lucek_form.factory.form_handler_result_factory.class%'
+        arguments:
+            - '@lucek_form.validation_extractor'
+
+    lucek_form.validation_extractor:
+        class: '%lucek_form.validation_extractor.class%'
+
+    lucek_form.repository:
+        class: '%lucek_form.repository.class%'
+
+    lucek_form.matcher:
+        class: '%lucek_form.matcher.class%'
+        arguments:
+            - '@lucek_form.repository'
+
+    lucek_form.handler.root:
+        class: '%lucek_form.handler.root.class%'
+        arguments:
+            - '@lucek_form.matcher'
+            - '@form.factory'
+            - '@lucek_form.factory.form_handler_result_factory'
+            - '@event.dispatcher'

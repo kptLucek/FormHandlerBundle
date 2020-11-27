@@ -1,0 +1,35 @@
+language: php
+
+branches:
+    # Only test the master branch and SemVer tags.
+    only:
+        - master
+        - '/^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+.*$/'
+
+matrix:
+    include:
+        -   php: 7.3
+            env: 'SCENARIO=symfony3_73'
+        -   php: 7.2
+            env: 'SCENARIO=symfony3_72'
+        -   php: 7.1
+            env: 'SCENARIO=symfony3_71'
+
+        -   php: 7.3
+            env: 'SCENARIO=symfony4_73'
+        -   php: 7.2
+            env: 'SCENARIO=symfony4_72'
+        -   php: 7.1
+            env: 'SCENARIO=symfony4_71'
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+install:
+    - composer install
+    - '.scenarios.lock/install "${SCENARIO}"'
+
+script:
+    - './vendor/bin/phpunit'

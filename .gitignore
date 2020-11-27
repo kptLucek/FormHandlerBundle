@@ -1,0 +1,7 @@
+composer.lock
+TestReports
+.scenarios.lock
+/.scannerwork
+
+/vendor/
+/bin/
