@@ -23,8 +23,8 @@ final class FormHandlerResultFactory implements FormHandlerResultFactoryInterfac
         return new FormHandlerResultModel(
             $form,
             $this->validationExtractor->extract($form),
-            $handled ? $form->isSubmitted() : false,
-            $handled ? $form->isValid() : true,
+            $form->isSubmitted(),
+            $form->isValid(),
             $handled
         );
     }

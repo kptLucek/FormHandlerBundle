@@ -31,12 +31,14 @@ class FormHandleResultFactoryTest extends FormHandlerTestCase
     public function test_with_unsubmitted_form_when_not_handled()
     {
         $this->formMock
-            ->expects($this->exactly(0))
-            ->method('isSubmitted');
+            ->expects($this->once())
+            ->method('isSubmitted')
+            ->willReturn(false);
 
         $this->formMock
-            ->expects($this->exactly(0))
-            ->method('isValid');
+            ->expects($this->once())
+            ->method('isValid')
+            ->willReturn(true);
 
         $this->validationExtractorMock
             ->expects($this->once())
