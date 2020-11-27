@@ -1,7 +1,7 @@
 {
     "name": "lucek/form-handler-bundle",
     "type": "symfony-bundle",
-    "description": "shop",
+    "description": "Bundle provides some logic for form handling process.",
     "keywords": [
         "form",
         "symfony"
