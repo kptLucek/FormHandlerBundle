@@ -14,18 +14,18 @@
 
     <services>
         <service id="lucek_form.form_handler_result_factory" class="%lucek_form.form_handler_result_factory.class%">
-            <argument type="service" id="@lucek_form.validation_extractor"/>
+            <argument type="service" id="lucek_form.validation_extractor"/>
         </service>
         <service id="lucek_form.validation_extractor" class="%lucek_form.validation_extractor.class%"/>
         <service id="lucek_form.repository" class="%lucek_form.repository.class%" />
         <service id="lucek_form.matcher" class="%lucek_form.matcher.class%">
-            <argument type="service" id="@lucek_form.repository"/>
+            <argument type="service" id="lucek_form.repository"/>
         </service>
         <service id="lucek_form.root_handler" class="%lucek_form.root_handler.class%">
-            <argument type="service" id="@lucek_form.matcher"/>
-            <argument type="service" id="@form.factory"/>
-            <argument type="service" id="@lucek_form.form_handler_result_factory"/>
-            <argument type="service" id="@event.dispatcher"/>
+            <argument type="service" id="lucek_form.matcher"/>
+            <argument type="service" id="form.factory"/>
+            <argument type="service" id="lucek_form.form_handler_result_factory"/>
+            <argument type="service" id="event_dispatcher"/>
         </service>
         <service id="Lucek\FormHandlerBundle\Repository\FormHandlerRepositoryInterface" alias="lucek_form.repository"/>
         <service id="Lucek\FormHandlerBundle\Validation\FormValidationExtractorInterface" alias="lucek_form.validation_extractor"/>
