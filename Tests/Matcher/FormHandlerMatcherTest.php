@@ -6,7 +6,7 @@ namespace Lucek\FormHandlerBundle\Tests\Matcher;
 use Lucek\FormHandlerBundle\Exception\Matcher\MatcherException;
 use Lucek\FormHandlerBundle\Exception\Matcher\UnsupportedTypeException;
 use Lucek\FormHandlerBundle\Handler\FormHandlerInterface;
-use Lucek\FormHandlerBundle\Matcher\FormHandlerMatcher;
+use Lucek\FormHandlerBundle\Matcher\FormHandlerHandlerMatcher;
 use Lucek\FormHandlerBundle\Repository\FormHandlerRepositoryInterface;
 use Lucek\FormHandlerBundle\Tests\FormHandlerTestCase;
 use Symfony\Component\Form\AbstractType;
@@ -16,13 +16,13 @@ class FormHandlerMatcherTest extends FormHandlerTestCase
     /** @var FormHandlerRepositoryInterface */
     private $repository;
 
-    /** @var FormHandlerMatcher */
+    /** @var FormHandlerHandlerMatcher */
     private $instance;
 
     protected function setUp()
     {
         $this->repository = $this->createMock(FormHandlerRepositoryInterface::class);
-        $this->instance = new FormHandlerMatcher($this->repository);
+        $this->instance = new FormHandlerHandlerMatcher($this->repository);
     }
 
     public function test_match_with_string_instead_of_form_fqn()

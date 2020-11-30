@@ -6,7 +6,7 @@ namespace Lucek\FormHandlerBundle\Handler;
 use Lucek\FormHandlerBundle\Event\FormHandlePostEvent;
 use Lucek\FormHandlerBundle\Event\FormHandlePreEvent;
 use Lucek\FormHandlerBundle\Factory\FormHandlerResultFactoryInterface;
-use Lucek\FormHandlerBundle\Matcher\FormMatcherInterface;
+use Lucek\FormHandlerBundle\Matcher\FormHandlerMatcherInterface;
 use Lucek\FormHandlerBundle\Model\FormHandlerResultInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class RootFormHandler implements RootFormHandlerInterface
 {
-    /** @var FormMatcherInterface */
+    /** @var FormHandlerMatcherInterface */
     private $matcher;
 
     /** @var FormFactoryInterface */
@@ -27,7 +27,7 @@ final class RootFormHandler implements RootFormHandlerInterface
     private $eventDispatcher;
 
     public function __construct(
-        FormMatcherInterface $matcher,
+        FormHandlerMatcherInterface $matcher,
         FormFactoryInterface $formFactory,
         FormHandlerResultFactoryInterface $handleResultFactory,
         EventDispatcherInterface $eventDispatcher

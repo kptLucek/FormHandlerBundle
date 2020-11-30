@@ -9,7 +9,7 @@ use Lucek\FormHandlerBundle\Handler\FormHandlerInterface;
 use Lucek\FormHandlerBundle\Repository\FormHandlerRepositoryInterface;
 use Symfony\Component\Form\FormTypeInterface;
 
-final class FormHandlerMatcher implements FormMatcherInterface
+final class FormHandlerHandlerMatcher implements FormHandlerMatcherInterface
 {
     /** @var FormHandlerRepositoryInterface */
     private $repository;

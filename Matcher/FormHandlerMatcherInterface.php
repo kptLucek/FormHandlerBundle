@@ -6,7 +6,7 @@ namespace Lucek\FormHandlerBundle\Matcher;
 use Lucek\FormHandlerBundle\Exception\Matcher\MatcherException;
 use Lucek\FormHandlerBundle\Handler\FormHandlerInterface;
 
-interface FormMatcherInterface
+interface FormHandlerMatcherInterface
 {
     /**
      * @param string $typeFQN
